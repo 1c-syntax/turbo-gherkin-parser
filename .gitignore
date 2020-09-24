@@ -1,0 +1,11 @@
+/.gradle/
+/.idea/jarRepositories.xml
+/.idea/sonarlint/
+/.idea/misc.xml
+/build/
+/src/main/gen/
+/.idea/gradle.xml
+/.idea/compiler.xml
+/.idea/.gitignore
+/src/main/antlr/gen/
+/.idea/vcs.xml
