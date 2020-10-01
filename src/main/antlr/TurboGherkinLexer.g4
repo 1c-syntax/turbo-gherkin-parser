@@ -21,6 +21,7 @@ DOLLAR: '$';
 DDOLLAR: '$$';
 TDOLLAR: '$$$';
 DOC_STRINGS  : '"""';
+COMMENT_LINE : '//' ~[\r\n]* -> channel(HIDDEN);
 
 DECIMAL: [0-9]+;
 
