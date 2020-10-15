@@ -11,7 +11,7 @@ plugins {
     id("com.github.hierynomus.license") version "0.15.0"
 }
 
-group = "ru.bia-tech.langs"
+group = "com.github.1c-syntax"
 version = gitVersionCalculator.calculateVersion("v")
 
 repositories {
@@ -39,10 +39,8 @@ dependencies {
     compileOnly(antlrGroupId, antlrArtifactId, antlrVersion)
     antlr(antlrGroupId, antlrArtifactId, antlrVersion)
 
-    implementation("com.github.1c-syntax", "bsl-parser", "0.16.0") {
+    implementation("com.github.1c-syntax", "bsl-parser", "8e29bfd87c2a573cba03629f90592e69bab03596") {
         exclude("com.tunnelvisionlabs", "antlr4-annotations")
-        exclude("com.tunnelvisionlabs", "antlr4")
-        exclude("commons-io", "commons-io")
         exclude("com.ibm.icu", "*")
         exclude("org.antlr", "ST4")
         exclude("org.abego.treelayout", "org.abego.treelayout.core")
@@ -51,7 +49,7 @@ dependencies {
     }
 
     // common
-    compile("commons-io", "commons-io", "2.6")
+    compileOnly("commons-io", "commons-io", "2.6")
 
     // tests
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitVersion)
