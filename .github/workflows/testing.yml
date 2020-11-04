@@ -1,0 +1,37 @@
+name: Testing
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        java_version: ['11', '14']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      # Актуализация
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Установка JDK
+      - name: Setup JDK ${{ matrix.java_version }}
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java_version }}
+
+      # Сборка и тестирование 
+      - name: Build and Check
+        run: ./gradlew check --stacktrace # --stacktrace нужен только для отладки
+
+      # Публикация отчета о тестировании (в случае неудачи)
+      - name: Archive test results
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: junit_report_${{ matrix.os }}_${{ matrix.java_version }}
+          path: build/reports/tests/test
+
+
+        
