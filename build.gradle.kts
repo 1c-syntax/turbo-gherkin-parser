@@ -9,6 +9,7 @@ plugins {
     `maven-publish`
     id("com.github.gradle-git-version-calculator") version "1.1.0"
     id("com.github.hierynomus.license") version "0.15.0"
+    id("org.sonarqube") version "3.0"
 }
 
 group = "ru.bia-tech.langs"
@@ -135,6 +136,18 @@ license {
     exclude("**/*.feature")
     strictCheck = true
     mapping("java", "SLASHSTAR_STYLE")
+}
+
+sonarqube {
+    properties {
+        property("sonar.sourceEncoding", "UTF-8")
+        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.organization", "1c-syntax")
+        property("sonar.projectKey", "1c-syntax_turbo-gherkin-parser")
+        property("sonar.projectName", "Turbo Gherkin parser")
+        property("sonar.exclusions", "**/gen/**/*.*")
+        property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
+    }
 }
 
 publishing {
