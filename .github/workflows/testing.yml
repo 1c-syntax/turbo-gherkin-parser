@@ -23,7 +23,7 @@ jobs:
 
       # Сборка и тестирование 
       - name: Build and Check
-        run: gradlew check --stacktrace # --stacktrace нужен только для отладки
+        run: ./gradlew check --stacktrace # --stacktrace нужен только для отладки
 
       # Публикация отчета о тестировании (в случае неудачи)
       - name: Archive test results
